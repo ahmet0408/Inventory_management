@@ -1,3 +1,4 @@
+using Inventory_management.dal.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +14,9 @@ namespace Inventory_management
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            CreateAdminData.CreateDataTask(host).GetAwaiter().GetResult();
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -17,6 +17,8 @@ namespace Inventory_management.dal.Models.Product
         public DateTime ArrivalAt { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
+        public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
         public ICollection<ProductTranslate> ProductTranslates { get; set; }
     }
 }

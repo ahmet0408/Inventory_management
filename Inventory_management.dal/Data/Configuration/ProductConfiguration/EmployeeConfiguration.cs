@@ -19,6 +19,7 @@ namespace Inventory_management.dal.Data.Configuration.ProductConfiguration
             builder.Property(p => p.Picture);
             builder.Property(p => p.PassportFile);
             builder.HasOne(p => p.Department).WithMany(p => p.Employees).HasForeignKey(p => p.DepartmentId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(p => p.Products).WithOne(p => p.Employee).HasForeignKey(p => p.EmployeeId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
