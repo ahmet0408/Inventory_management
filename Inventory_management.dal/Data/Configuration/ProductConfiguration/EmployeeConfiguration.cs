@@ -1,4 +1,4 @@
-﻿using Inventory_management.dal.Models.Product;
+﻿using Inventory_management.dal.Models.Employee;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

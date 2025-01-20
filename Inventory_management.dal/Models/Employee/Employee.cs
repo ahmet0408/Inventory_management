@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_management.dal.Models.Product
+namespace Inventory_management.dal.Models.Employee
 {
     public class Employee
     {
@@ -14,7 +14,7 @@ namespace Inventory_management.dal.Models.Product
         public string Picture { get; set; }
         public string PassportFile { get; set; }
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public Department.Department Department { get; set; }
+        public ICollection<Product.Product> Products { get; set; }
     }
 }

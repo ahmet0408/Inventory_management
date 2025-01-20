@@ -1,4 +1,6 @@
 ﻿using Inventory_management.dal.Models.Category;
+using Inventory_management.dal.Models.Department;
+using Inventory_management.dal.Models.Employee;
 using Inventory_management.dal.Models.Language;
 using Inventory_management.dal.Models.Product;
 using Microsoft.EntityFrameworkCore;

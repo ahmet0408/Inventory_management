@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\CategoryDTO\" />
+    <Folder Include="DTOs\DepartmentDTO\" />
+    <Folder Include="DTOs\EmployeeDTO\" />
+    <Folder Include="DTOs\ProductDTO\" />
+  </ItemGroup>
+
+</Project>

@@ -1,5 +1,4 @@
-﻿using Inventory_management.dal.Models.Product;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +14,12 @@ namespace Inventory_management.dal.Models.Product
         public int Price { get; set; }
         public string Status { get; set; }
         public DateTime ArrivalAt { get; set; }
+        public int CategoryId { get; set; }
+        public Category.Category Category { get; set; }
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public Department.Department Department { get; set; }
         public int EmployeeId { get; set; }
-        public Employee Employee { get; set; }
+        public Employee.Employee Employee { get; set; }
         public ICollection<ProductTranslate> ProductTranslates { get; set; }
     }
 }

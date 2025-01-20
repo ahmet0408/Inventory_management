@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_management.dal.Models.Product
+namespace Inventory_management.dal.Models.Department
 {
     public class DepartmentTranslate
     {
