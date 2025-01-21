@@ -8,7 +8,14 @@
     <Folder Include="DTOs\CategoryDTO\" />
     <Folder Include="DTOs\DepartmentDTO\" />
     <Folder Include="DTOs\EmployeeDTO\" />
-    <Folder Include="DTOs\ProductDTO\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BarCode.Slim" Version="2023.12.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inventory_management.dal\Inventory_management.dal.csproj" />
   </ItemGroup>
 
 </Project>
