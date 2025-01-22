@@ -1,4 +1,6 @@
+using AutoMapper;
 using Inventory_management.dal.Data;
+using Inventory_management.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +38,13 @@ namespace Inventory_management
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Inventory_management", Version = "v1" });
             });
+            services.AddRepositories();
+            var mappingConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile());
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
