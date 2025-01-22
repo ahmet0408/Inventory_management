@@ -16,6 +16,7 @@ namespace Inventory_management.dal.Data.Configuration.ProductConfiguration
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Name);
             builder.Property(p => p.Address);
+            builder.Property(p => p.LanguageCulture);
             builder.HasOne(p => p.Department).WithMany(p => p.DepartmentTranslates).HasForeignKey(p => p.DepartmentId).OnDelete(DeleteBehavior.Cascade);
         }
     }
