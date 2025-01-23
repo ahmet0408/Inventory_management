@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="DTOs\CategoryDTO\" />
-    <Folder Include="DTOs\DepartmentDTO\" />
-    <Folder Include="DTOs\EmployeeDTO\" />
   </ItemGroup>
 
   <ItemGroup>

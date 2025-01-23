@@ -12,5 +12,6 @@ namespace Inventory_management.bll.Services.CompanyService
     {
         Task CreateCompany(CreateCompanyDTO modelDTO);
         Task EditCompany(EditCompanyDTO modelDTO);
+        IEnumerable<CompanyDTO> GetCompanies();
     }
 }

@@ -55,5 +55,12 @@ namespace Inventory_management.bll.Services.CompanyService
                 await _dbContext.SaveChangesAsync();
             }
         }
+
+        public IEnumerable<CompanyDTO> GetCompanies()
+        {
+            var companies = _dbContext.Company.ToList();
+            var result = _mapper.Map<IEnumerable<CompanyDTO>>(companies);
+            return result;
+        } 
     }
 }

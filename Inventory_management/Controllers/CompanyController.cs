@@ -18,7 +18,12 @@ namespace Inventory_management.Controllers
         {
             _companyService = companyService;
         }
-
+        [HttpGet]
+        public IActionResult GetCompanies()
+        {
+            var companies = _companyService.GetCompanies();
+            return Ok(companies);
+        }
         [HttpPost("create")]
         public async Task<IActionResult> CreateCompany([FromForm] CreateCompanyDTO createCompanyDTO)
         {
