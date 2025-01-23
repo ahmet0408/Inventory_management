@@ -1,4 +1,5 @@
-﻿using Inventory_management.bll.Services.CompanyService;
+﻿using Inventory_management.bll.Services.CategoryService;
+using Inventory_management.bll.Services.CompanyService;
 using Inventory_management.bll.Services.DepartmentService;
 using Inventory_management.bll.Services.EmployeeService;
 using Inventory_management.bll.Services.ImageService;
@@ -13,6 +14,7 @@ namespace Inventory_management.Extensions
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IDepartmentService, DepartmentService>();
+            services.AddTransient<ICategoryService,  CategoryService>();
             services.AddTransient<IImageService, ImageService>();
             return services;
         }

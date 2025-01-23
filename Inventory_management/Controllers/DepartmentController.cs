@@ -2,6 +2,7 @@
 using Inventory_management.bll.Services.DepartmentService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 using System.Threading.Tasks;
 
 namespace Inventory_management.Controllers
@@ -15,6 +16,13 @@ namespace Inventory_management.Controllers
         public DepartmentController(IDepartmentService departmentService)
         {
             _departmentService = departmentService;
+        }
+
+        [HttpGet]
+        public IActionResult GetDepartments()
+        {
+            var departments = _departmentService.GetDepartments();
+            return Ok(departments);
         }
 
         [HttpPost("create")]

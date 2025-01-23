@@ -16,7 +16,7 @@ namespace Inventory_management.dal.Data.Configuration.CategoryConfiguration
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Order);
             builder.Property(p => p.IsPublish);
-            builder.HasMany(p => p.Categories).WithOne(p => p.ParentCategory).HasForeignKey(p => p.ParentId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(p => p.Categories).WithOne(p => p.ParentCategory).HasForeignKey(p => p.ParentId).OnDelete(DeleteBehavior.Restrict).IsRequired(false); ;
             builder.HasMany(p => p.Products).WithOne(p => p.Category).HasForeignKey(p => p.CategoryId).OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(p => p.CategoryTranslates).WithOne(p => p.Category).HasForeignKey(p => p.CategoryId).OnDelete(DeleteBehavior.Cascade);
         }

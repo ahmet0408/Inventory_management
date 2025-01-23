@@ -11,8 +11,8 @@ namespace Inventory_management.dal.Models.Category
         public int Id { get; set; }
         public int Order { get; set; }
         public bool IsPublish { get; set; }
-        public int ParentId { get; set; }
-        public Category ParentCategory { get; set; }
+        public int? ParentId { get; set; }
+        public Category? ParentCategory { get; set; }
         public ICollection<Product.Product> Products { get; set; }
         public ICollection<Category> Categories { get; set; }
         public ICollection<CategoryTranslate> CategoryTranslates { get; set; }

@@ -2,6 +2,7 @@
 using Inventory_management.bll.DTOs.DepartmentDTO;
 using Inventory_management.dal.Data;
 using Inventory_management.dal.Models.Department;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +30,12 @@ namespace Inventory_management.bll.Services.DepartmentService
                 await _dbContext.SaveChangesAsync();
             }
         } 
+
+        public IEnumerable<DepartmentDTO> GetDepartments()
+        {
+            var deparments = _dbContext.Department.Include(p => p.DepartmentTranslates).ToList();
+            var result = _mapper.Map<IEnumerable<DepartmentDTO>>(deparments);
+            return result;
+        }
     }
 }
