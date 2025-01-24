@@ -32,6 +32,14 @@ namespace Inventory_management
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    builder => builder.WithOrigins("https://8ffa-211-221-128-68.ngrok-free.app") // Adjust as per your React app URL
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod()
+                                      .AllowCredentials());
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(
                    Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
@@ -81,6 +89,7 @@ namespace Inventory_management
 
             app.UseHttpsRedirection();
             app.UseRequestLocalization();
+            app.UseCors("AllowReactApp");
             app.UseRouting();
 
             app.UseAuthorization();
