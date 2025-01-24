@@ -21,9 +21,12 @@ namespace Inventory_management.Extensions
             CreateMap<Company, CompanyDTO>();
 
             CreateMap<CreateEmployeeDTO, Employee>();
+            CreateMap<EditEmployeeDTO, Employee>();
+            CreateMap<Employee, EmployeeDTO>();
 
             CreateMap<CreateDepartmentDTO, Department>();
             CreateMap<DepartmentTranslateDTO, DepartmentTranslate>().ReverseMap();
+            CreateMap<EditDepartmentDTO, Department>();
             CreateMap<Department, DepartmentDTO>()
                 .ForMember(p => p.Name, p => p.MapFrom(p => p.DepartmentTranslates.Select(p => p.Name).FirstOrDefault()))
                 .ForMember(p => p.Address, p => p.MapFrom(p => p.DepartmentTranslates.Select(p => p.Address).FirstOrDefault()))
@@ -31,6 +34,10 @@ namespace Inventory_management.Extensions
 
             CreateMap<CreateCategoryDTO, Category>();
             CreateMap<CategoryTranslateDTO, CategoryTranslate>().ReverseMap();
+            CreateMap<EditCategoryDTO, Category>();
+            CreateMap<Category, CategoryDTO>()
+                .ForMember(p => p.Name, p => p.MapFrom(p => p.CategoryTranslates.Select(p => p.Name).FirstOrDefault()))
+                .ForMember(p => p.LanguageCulture, p => p.MapFrom(p => p.CategoryTranslates.Select(p => p.LanguageCulture).FirstOrDefault()));
 
         }
     }

@@ -10,6 +10,7 @@ namespace Inventory_management.bll.Services.DepartmentService
     public interface IDepartmentService
     {
         Task CreateDepartment(CreateDepartmentDTO modelDTO);
+        Task EditDepartment(EditDepartmentDTO modelDTO);
         IEnumerable<DepartmentDTO> GetDepartments();
     }
 }

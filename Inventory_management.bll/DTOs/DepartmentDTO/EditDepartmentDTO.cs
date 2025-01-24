@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Inventory_management.bll.DTOs.DepartmentDTO
 {
-    public class DepartmentTranslateDTO
+    public class EditDepartmentDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string LanguageCulture { get; set; }
+        public ICollection<DepartmentTranslateDTO> DepartmentTranslates { get; set; }
     }
 }

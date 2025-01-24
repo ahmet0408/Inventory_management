@@ -8,6 +8,7 @@ namespace Inventory_management.bll.DTOs.ProductDTO
 {
     public class ProductTranslateDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string LanguageCulture { get; set; }

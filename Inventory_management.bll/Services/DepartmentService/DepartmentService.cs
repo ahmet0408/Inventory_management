@@ -31,6 +31,15 @@ namespace Inventory_management.bll.Services.DepartmentService
             }
         } 
 
+        public async Task EditDepartment(EditDepartmentDTO modelDTO)
+        {
+            if (modelDTO != null)
+            {
+                Department department = _mapper.Map<Department>(modelDTO);
+                _dbContext.Department.Update(department);
+                await _dbContext.SaveChangesAsync();
+            }
+        }
         public IEnumerable<DepartmentDTO> GetDepartments()
         {
             var deparments = _dbContext.Department.Include(p => p.DepartmentTranslates).ToList();

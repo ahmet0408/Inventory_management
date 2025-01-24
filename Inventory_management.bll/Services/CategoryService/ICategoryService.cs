@@ -10,5 +10,7 @@ namespace Inventory_management.bll.Services.CategoryService
     public interface ICategoryService
     {
         Task CreateCategory(CreateCategoryDTO modelDTO);
+        Task EditCategory(EditCategoryDTO modelDTO);
+        IEnumerable<CategoryDTO> GetCategories();
     }
 }

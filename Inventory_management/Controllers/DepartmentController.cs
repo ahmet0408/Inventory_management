@@ -35,5 +35,16 @@ namespace Inventory_management.Controllers
             }
             return BadRequest();
         }
+
+        [HttpPut("edit")]
+        public async Task<IActionResult> EditDepartment([FromBody] EditDepartmentDTO editDepartmentDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await _departmentService.EditDepartment(editDepartmentDTO);
+                return Ok(editDepartmentDTO);
+            }
+            return BadRequest();
+        }
     }
 }

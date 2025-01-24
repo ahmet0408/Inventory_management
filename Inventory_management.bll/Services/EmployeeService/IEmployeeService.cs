@@ -10,5 +10,7 @@ namespace Inventory_management.bll.Services.EmployeeService
     public interface IEmployeeService
     {
         Task CreateEmployee(CreateEmployeeDTO modelDTO);
+        Task EditEmployee(EditEmployeeDTO modelDTO);
+        IEnumerable<EmployeeDTO> GetEmployees();
     }
 }

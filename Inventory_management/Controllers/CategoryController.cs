@@ -2,6 +2,7 @@
 using Inventory_management.bll.Services.CategoryService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
 using System.Threading.Tasks;
 
 namespace Inventory_management.Controllers
@@ -16,14 +17,31 @@ namespace Inventory_management.Controllers
         {
             _categoryService = categoryService;
         }
+        [HttpGet]
+        public IActionResult GetCategories()
+        {
+            var categories = _categoryService.GetCategories();
+            return Ok(categories);
+        }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<IActionResult> CreateCategory(CreateCategoryDTO createCategoryDTO)
         {
             if (ModelState.IsValid)
             {
                 await _categoryService.CreateCategory(createCategoryDTO);
                 return Ok(createCategoryDTO);
+            }
+            return BadRequest();
+        }
+
+        [HttpPut("edit")]
+        public async Task<IActionResult> EditCategory(EditCategoryDTO editCategoryDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await _categoryService.EditCategory(editCategoryDTO);
+                return Ok(editCategoryDTO);
             }
             return BadRequest();
         }
