@@ -4,10 +4,12 @@ using Inventory_management.bll.DTOs.CompanyDTO;
 using Inventory_management.bll.DTOs.CreateCompanyDTO;
 using Inventory_management.bll.DTOs.DepartmentDTO;
 using Inventory_management.bll.DTOs.EmployeeDTO;
+using Inventory_management.bll.DTOs.ProductDTO;
 using Inventory_management.dal.Models.Category;
 using Inventory_management.dal.Models.Company;
 using Inventory_management.dal.Models.Department;
 using Inventory_management.dal.Models.Employee;
+using Inventory_management.dal.Models.Product;
 using System.Linq;
 
 namespace Inventory_management.Extensions
@@ -39,6 +41,8 @@ namespace Inventory_management.Extensions
                 .ForMember(p => p.Name, p => p.MapFrom(p => p.CategoryTranslates.Select(p => p.Name).FirstOrDefault()))
                 .ForMember(p => p.LanguageCulture, p => p.MapFrom(p => p.CategoryTranslates.Select(p => p.LanguageCulture).FirstOrDefault()));
 
+            CreateMap<CreateProductDTO, Product>();
+            CreateMap<ProductTranslateDTO, ProductTranslate>().ReverseMap();
         }
     }
 }

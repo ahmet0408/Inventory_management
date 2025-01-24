@@ -17,6 +17,13 @@ namespace Inventory_management.Controllers
             _employeeService = employeeService;
         }
 
+        [HttpGet]
+        public IActionResult GetEmployees()
+        {
+            var employees = _employeeService.GetEmployees();
+            return Ok(employees);
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> CreateEmployee([FromForm] CreateEmployeeDTO createEmployeeDTO)
         {
@@ -26,6 +33,23 @@ namespace Inventory_management.Controllers
                 return Ok(createEmployeeDTO);
             }
             return BadRequest();
+        }
+
+        [HttpPut("edit")]
+        public async Task<IActionResult> EditEmployee([FromForm] EditEmployeeDTO editEmployeeDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await _employeeService.EditEmployee(editEmployeeDTO);
+                return Ok(editEmployeeDTO);
+            }
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task RemoveEmployee(int id)
+        {
+            await _employeeService.RemoveEmployee(id);
         }
     }
 }

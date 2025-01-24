@@ -11,6 +11,7 @@ namespace Inventory_management.bll.Services.DepartmentService
     {
         Task CreateDepartment(CreateDepartmentDTO modelDTO);
         Task EditDepartment(EditDepartmentDTO modelDTO);
+        Task RemoveDepartment(int id);
         IEnumerable<DepartmentDTO> GetDepartments();
     }
 }

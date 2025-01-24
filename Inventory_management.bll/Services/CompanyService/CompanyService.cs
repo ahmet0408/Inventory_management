@@ -4,6 +4,7 @@ using Inventory_management.bll.DTOs.CreateCompanyDTO;
 using Inventory_management.bll.Services.ImageService;
 using Inventory_management.dal.Data;
 using Inventory_management.dal.Models.Company;
+using Inventory_management.dal.Models.Product;
 using SixLabors.ImageSharp;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,17 @@ namespace Inventory_management.bll.Services.CompanyService
                 _dbContext.Company.Update(company);
                 await _dbContext.SaveChangesAsync();
             }
+        }
+
+        public async Task RemoveCompany(int id)
+        {
+            Company company = await _dbContext.Company.FindAsync(id);
+            if (!string.IsNullOrEmpty(company.Logo))
+            {
+                _imageService.DeleteImage(company.Logo, FilePath);
+            }
+            _dbContext.Company.Remove(company);
+            await _dbContext.SaveChangesAsync();
         }
 
         public IEnumerable<CompanyDTO> GetCompanies()

@@ -40,6 +40,13 @@ namespace Inventory_management.bll.Services.DepartmentService
                 await _dbContext.SaveChangesAsync();
             }
         }
+
+        public async Task RemoveDepartment(int id)
+        {
+            Department department = await _dbContext.Department.FindAsync(id);
+            _dbContext.Department.Remove(department);
+            await _dbContext.SaveChangesAsync();
+        }
         public IEnumerable<DepartmentDTO> GetDepartments()
         {
             var deparments = _dbContext.Department.Include(p => p.DepartmentTranslates).ToList();

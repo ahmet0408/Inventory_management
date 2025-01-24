@@ -46,5 +46,11 @@ namespace Inventory_management.Controllers
             }
             return BadRequest();
         }
+
+        [HttpDelete("{id}")]
+        public async Task RemoveDepartment(int id)
+        {
+            await _departmentService.RemoveDepartment(id);
+        }
     }
 }

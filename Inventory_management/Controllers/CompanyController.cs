@@ -45,5 +45,11 @@ namespace Inventory_management.Controllers
             }
             return BadRequest();
         }
+
+        [HttpDelete("{id}")]
+        public async Task RemoveCompany(int id)
+        {
+            await _companyService.RemoveCompany(id);
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Inventory_management.dal.Data.Configuration.ProductConfiguration
             builder.Property(p => p.Price);
             builder.Property(p => p.Status);
             builder.Property(p => p.ArrivalAt);
+            builder.Property(p => p.Image);
             builder.HasOne(p => p.Department).WithMany(p => p.Products).HasForeignKey(p => p.DepartmentId).OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(p => p.Category).WithMany(p => p.Products).HasForeignKey(p => p.CategoryId).OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(p => p.ProductTranslates).WithOne(p => p.Product).HasForeignKey(p => p.ProductId).OnDelete(DeleteBehavior.Cascade);

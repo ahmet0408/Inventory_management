@@ -9,6 +9,7 @@ namespace Inventory_management.dal.Models.Product
         public int Amount { get; set; }
         public string Barcode { get; set; }
         public int Price { get; set; }
+        public string Image { get; set; }
         public string Status { get; set; }
         public DateTime ArrivalAt { get; set; }
         public int CategoryId { get; set; }

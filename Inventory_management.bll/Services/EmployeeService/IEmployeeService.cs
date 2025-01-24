@@ -11,6 +11,7 @@ namespace Inventory_management.bll.Services.EmployeeService
     {
         Task CreateEmployee(CreateEmployeeDTO modelDTO);
         Task EditEmployee(EditEmployeeDTO modelDTO);
+        Task RemoveEmployee(int id);
         IEnumerable<EmployeeDTO> GetEmployees();
     }
 }

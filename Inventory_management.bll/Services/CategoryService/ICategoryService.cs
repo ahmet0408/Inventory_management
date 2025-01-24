@@ -12,5 +12,6 @@ namespace Inventory_management.bll.Services.CategoryService
         Task CreateCategory(CreateCategoryDTO modelDTO);
         Task EditCategory(EditCategoryDTO modelDTO);
         IEnumerable<CategoryDTO> GetCategories();
+        Task RemoveCategory(int id);
     }
 }

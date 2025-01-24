@@ -44,6 +44,13 @@ namespace Inventory_management.bll.Services.CategoryService
             }
         }
 
+        public async Task RemoveCategory(int id)
+        {
+            Category category = await _dbContext.Category.FindAsync(id);            
+            _dbContext.Category.Remove(category);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public IEnumerable<CategoryDTO> GetCategories()
         {
             var categories = _dbContext.Category.Include(p => p.CategoryTranslates).ToList();

@@ -38,5 +38,38 @@ namespace Inventory_management.bll.Services.EmployeeService
                 await _dbContext.SaveChangesAsync();
             }
         }
+
+        public async Task EditEmployee(EditEmployeeDTO modelDTO)
+        {
+            if (modelDTO != null)
+            {
+                Employee employee = _mapper.Map<Employee>(modelDTO);
+                if (modelDTO.FormPicture != null)
+                {
+                    _imageService.DeleteImage(modelDTO.Picture, FilePath);
+                    await _imageService.UploadImage(modelDTO.FormPicture, FilePath);
+                }
+                _dbContext.Employee.Update(employee);
+                await _dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveEmployee(int id)
+        {
+            Employee employee = await _dbContext.Employee.FindAsync(id);
+            if (!string.IsNullOrEmpty(employee.Picture))
+            {
+                _imageService.DeleteImage(employee.Picture, FilePath);
+            }
+            _dbContext.Employee.Remove(employee);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public IEnumerable<EmployeeDTO> GetEmployees() 
+        {
+            var employees = _dbContext.Employee.ToList();
+            var result = _mapper.Map<IEnumerable<EmployeeDTO>>(employees);
+            return result; 
+        }
     }
 }

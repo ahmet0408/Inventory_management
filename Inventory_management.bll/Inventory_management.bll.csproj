@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Inventory_management.dal\Inventory_management.dal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\BarcodeService\" />
+  </ItemGroup>
+
 </Project>

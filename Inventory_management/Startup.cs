@@ -84,7 +84,7 @@ namespace Inventory_management
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventory_management v1"));
+                app.UseSwaggerUI(c => { c.DisplayRequestDuration(); c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventory_management v1"); });
             }
 
             app.UseHttpsRedirection();

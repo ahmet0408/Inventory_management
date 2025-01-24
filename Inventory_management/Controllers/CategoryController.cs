@@ -25,7 +25,7 @@ namespace Inventory_management.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateCategory(CreateCategoryDTO createCategoryDTO)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDTO createCategoryDTO)
         {
             if (ModelState.IsValid)
             {
@@ -36,7 +36,7 @@ namespace Inventory_management.Controllers
         }
 
         [HttpPut("edit")]
-        public async Task<IActionResult> EditCategory(EditCategoryDTO editCategoryDTO)
+        public async Task<IActionResult> EditCategory([FromBody] EditCategoryDTO editCategoryDTO)
         {
             if (ModelState.IsValid)
             {
@@ -44,6 +44,12 @@ namespace Inventory_management.Controllers
                 return Ok(editCategoryDTO);
             }
             return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task RemoveCategory(int id)
+        {
+            await _categoryService.RemoveCategory(id);
         }
     }
 }
