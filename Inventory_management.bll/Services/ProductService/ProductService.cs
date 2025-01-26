@@ -3,6 +3,7 @@ using Inventory_management.bll.DTOs.ProductDTO;
 using Inventory_management.bll.Services.ImageService;
 using Inventory_management.dal.Data;
 using Inventory_management.dal.Models.Product;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,5 +41,37 @@ namespace Inventory_management.bll.Services.ProductService
             }
         }
 
+        public async Task EditProduct(EditProductDTO modelDTO)
+        {
+            if (modelDTO != null)
+            {
+                Product product = _mapper.Map<Product>(modelDTO);
+                if (modelDTO.FormImage != null)
+                {
+                    _imageService.DeleteImage(modelDTO.Image, FilePath);
+                    await _imageService.UploadImage(modelDTO.FormImage, FilePath);
+                }
+                _dbContext.Product.Update(product);
+                await _dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveProduct(int id)
+        {
+            var product = await _dbContext.Product.FindAsync(id);
+            if (!string.IsNullOrEmpty(product.Image))
+            {
+                _imageService.DeleteImage(product.Image, FilePath);
+            }
+            _dbContext.Product.Remove(product);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public IEnumerable<ProductDTO> GetProducts()
+        {
+            var products = _dbContext.Product.Include(p => p.ProductTranslates).ToList();
+            var result = _mapper.Map<IEnumerable<ProductDTO>>(products);
+            return result;
+        }
     }
 }

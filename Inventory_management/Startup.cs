@@ -35,7 +35,7 @@ namespace Inventory_management
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp",
-                    builder => builder.WithOrigins("https://8ffa-211-221-128-68.ngrok-free.app") // Adjust as per your React app URL
+                    builder => builder.WithOrigins("http://localhost:3000") // Adjust as per your React app URL
                                       .AllowAnyHeader()
                                       .AllowAnyMethod()
                                       .AllowCredentials());

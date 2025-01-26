@@ -12,6 +12,7 @@ namespace Inventory_management.dal.Models.Employee
         public string FullName { get; set; }
         public string Job { get; set; }
         public string Picture { get; set; }
+        public DateTime CreatedAt { get; set; }
         public string PassportFile { get; set; }
         public int DepartmentId { get; set; }
         public Department.Department Department { get; set; }

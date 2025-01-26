@@ -3,6 +3,7 @@ using Inventory_management.bll.DTOs.EmployeeDTO;
 using Inventory_management.bll.Services.ImageService;
 using Inventory_management.dal.Data;
 using Inventory_management.dal.Models.Employee;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +68,7 @@ namespace Inventory_management.bll.Services.EmployeeService
 
         public IEnumerable<EmployeeDTO> GetEmployees() 
         {
-            var employees = _dbContext.Employee.ToList();
+            var employees = _dbContext.Employee.Include(p => p.Department).ThenInclude(p => p.DepartmentTranslates).ToList();
             var result = _mapper.Map<IEnumerable<EmployeeDTO>>(employees);
             return result; 
         }

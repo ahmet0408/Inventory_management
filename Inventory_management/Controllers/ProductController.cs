@@ -16,7 +16,12 @@ namespace Inventory_management.Controllers
         {
             _productService = productService;
         }
-
+        [HttpGet]
+        public IActionResult GetProducts() 
+        { 
+            var products = _productService.GetProducts();
+            return Ok(products);    
+        }
         [HttpPost("create")]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDTO createProductDTO)
         {
@@ -26,6 +31,23 @@ namespace Inventory_management.Controllers
                 return Ok(createProductDTO);
             }
             return BadRequest();
+        }
+
+        [HttpPut("edit")]
+        public async Task<IActionResult> EditProduct([FromForm] EditProductDTO editProductDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.EditProduct(editProductDTO);
+                return Ok(editProductDTO);
+            }
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task RemoveProduct(int id)
+        {
+            await _productService.RemoveProduct(id);
         }
     }
 }

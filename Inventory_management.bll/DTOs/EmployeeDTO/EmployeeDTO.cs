@@ -14,5 +14,6 @@ namespace Inventory_management.bll.DTOs.EmployeeDTO
         public string Picture { get; set; }
         public string PassportFile { get; set; }
         public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
 }
