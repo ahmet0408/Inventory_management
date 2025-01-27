@@ -19,6 +19,7 @@ namespace Inventory_management.dal.Data.Configuration.CompanyConfiguration
             builder.Property(p => p.Address);
             builder.Property(p => p.Phone);
             builder.Property(p => p.Email);
+            builder.Property(p => p.IsPublish);
         }
     }
 }

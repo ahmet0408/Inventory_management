@@ -15,6 +15,6 @@ namespace Inventory_management.dal.Models.Company
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-
+        public bool IsPublish { get; set; }
     }
 }

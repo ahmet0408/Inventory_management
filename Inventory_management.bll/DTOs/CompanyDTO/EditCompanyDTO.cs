@@ -19,5 +19,6 @@ namespace Inventory_management.bll.DTOs.CompanyDTO
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        public bool IsPublish { get; set; }
     }
 }
