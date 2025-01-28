@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Inventory_management.bll.DTOs.ProductDTO
@@ -12,6 +13,7 @@ namespace Inventory_management.bll.DTOs.ProductDTO
     {
         public ICollection<ProductTranslateDTO> ProductTranslates { get; set; }
         public int Amount { get; set; }
+        public int Order { get; set; }
         public string Barcode { get; set; }
         public int Price { get; set; }
         public string Status { get; set; }

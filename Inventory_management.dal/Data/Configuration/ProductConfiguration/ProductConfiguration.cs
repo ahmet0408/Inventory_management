@@ -16,6 +16,7 @@ namespace Inventory_management.dal.Data.Configuration.ProductConfiguration
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Amount);
             builder.Property(p => p.Barcode);
+            builder.Property(p => p.Order);
             builder.Property(p => p.Price);
             builder.Property(p => p.Status);
             builder.Property(p => p.ArrivalAt);

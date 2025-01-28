@@ -2,6 +2,8 @@
 using Inventory_management.bll.Services.ProductService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Inventory_management.Controllers
