@@ -18,7 +18,7 @@ mono_crash.*
 
 # Build results
 [Dd]ebug/
-[Ww]wwroot/images
+[Ww]wwroot/images/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
