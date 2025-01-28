@@ -53,7 +53,7 @@ namespace Inventory_management.bll.Services.CategoryService
 
         public IEnumerable<CategoryDTO> GetCategories()
         {
-            var categories = _dbContext.Category.Include(p => p.CategoryTranslates).ToList();
+            var categories = _dbContext.Category.Include(p => p.CategoryTranslates).Include(p => p.ParentCategory).ThenInclude(p => p.CategoryTranslates).ToList();
             var result = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
             return result;
         }

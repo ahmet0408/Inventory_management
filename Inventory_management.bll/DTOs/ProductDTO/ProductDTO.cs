@@ -17,10 +17,13 @@ namespace Inventory_management.bll.DTOs.ProductDTO
         public string Barcode { get; set; }
         public int Price { get; set; }
         public string Status { get; set; }
-        public IFormFile FormImage { get; set; }
+        public string Image { get; set; }
         public DateTime ArrivalAt { get; set; } = DateTime.Now;
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
         public int EmployeeId { get; set; }
+        public string EmployeeName { get; set; }
     }
 }

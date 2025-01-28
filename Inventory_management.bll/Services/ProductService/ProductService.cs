@@ -69,7 +69,7 @@ namespace Inventory_management.bll.Services.ProductService
 
         public IEnumerable<ProductDTO> GetProducts()
         {
-            var products = _dbContext.Product.Include(p => p.ProductTranslates).ToList();
+            var products = _dbContext.Product.Include(p => p.Department).ThenInclude(p => p.DepartmentTranslates).Include(p => p.Employee).Include(p => p.ProductTranslates).Include(p => p.Category).ThenInclude(p => p.CategoryTranslates).ToList();
             var result = _mapper.Map<IEnumerable<ProductDTO>>(products);
             return result;
         }

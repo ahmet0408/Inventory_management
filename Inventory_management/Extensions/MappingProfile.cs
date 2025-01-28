@@ -39,6 +39,7 @@ namespace Inventory_management.Extensions
             CreateMap<CategoryTranslateDTO, CategoryTranslate>().ReverseMap();
             CreateMap<EditCategoryDTO, Category>();
             CreateMap<Category, CategoryDTO>()
+                .ForMember(p => p.ParentCategory, p => p.MapFrom(p => p.ParentCategory.CategoryTranslates.Select(p => p.Name).FirstOrDefault()))
                 .ForMember(p => p.Name, p => p.MapFrom(p => p.CategoryTranslates.Select(p => p.Name).FirstOrDefault()))
                 .ForMember(p => p.LanguageCulture, p => p.MapFrom(p => p.CategoryTranslates.Select(p => p.LanguageCulture).FirstOrDefault()));
 
@@ -46,6 +47,9 @@ namespace Inventory_management.Extensions
             CreateMap<ProductTranslateDTO, ProductTranslate>().ReverseMap();
             CreateMap<EditProductDTO, Product>();
             CreateMap<Product, ProductDTO>()
+                .ForMember(p => p.CategoryName, p => p.MapFrom(p => p.Category.CategoryTranslates.Select(p => p.Name).FirstOrDefault()))
+                .ForMember(p => p.DepartmentName, p => p.MapFrom(p => p.Department.DepartmentTranslates.Select(p => p.Name).FirstOrDefault()))
+                .ForMember(p => p.EmployeeName, p => p.MapFrom(p => p.Employee.FullName))
                 .ForMember(p => p.Name, p => p.MapFrom(p => p.ProductTranslates.Select(p => p.Name).FirstOrDefault()))
                 .ForMember(p => p.Description, p => p.MapFrom(p => p.ProductTranslates.Select(p => p.Description).FirstOrDefault()))
                 .ForMember(p => p.LanguageCulture, p => p.MapFrom(p => p.ProductTranslates.Select(p => p.LanguageCulture).FirstOrDefault()));

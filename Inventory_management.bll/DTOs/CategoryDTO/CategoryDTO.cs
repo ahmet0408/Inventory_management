@@ -13,6 +13,7 @@ namespace Inventory_management.bll.DTOs.CategoryDTO
         public string LanguageCulture { get; set; }
         public int Order { get; set; }
         public int? ParentId { get; set; }
+        public string? ParentCategory { get; set; }
         public bool IsPublish { get; set; }
     }
 }
