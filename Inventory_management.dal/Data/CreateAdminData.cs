@@ -1,5 +1,7 @@
 ﻿using Inventory_management.dal.Models.Language;
+using Inventory_management.dal.Models.User;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +23,37 @@ namespace Inventory_management.dal.Data
                 var services = scope.ServiceProvider;
                 var _dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 await _dbContext.Database.MigrateAsync();
+
+                var context = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+                if (!await context.Roles.AnyAsync())
+                {
+                    await context.CreateAsync(new IdentityRole { Name = "Administrator" });
+                    await context.CreateAsync(new IdentityRole { Name = "User" });
+                }
+
+                var userContext = services.GetRequiredService<UserManager<ApplicationUser>>();
+
+                var admin = await userContext.FindByNameAsync("admin");
+
+                if (admin == null)
+                {
+                    ApplicationUser adminUser = new ApplicationUser
+                    {
+                        FirstName = "Admin",
+                        LastName = "Admin",
+                        Email = $"admin@.invertary.com",
+                        UserName = "admin",
+                        PhoneNumber = "+99361924133",
+                        EmailConfirmed = true,
+                        PhoneNumberConfirmed = true
+                    };
+
+                    await userContext.CreateAsync(adminUser, "Password1!");
+                    await userContext.AddToRoleAsync(adminUser, "Administrator");
+                    await userContext.AddToRoleAsync(adminUser, "User");
+                }
+
 
                 List<Language> languages = new List<Language>();
                 languages.Add(new Language() { Culture = "ru", Name = "Русский", DisplayOrder = 0, IsPublish = true });

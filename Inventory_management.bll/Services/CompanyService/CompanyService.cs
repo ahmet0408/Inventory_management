@@ -5,7 +5,6 @@ using Inventory_management.bll.Services.ImageService;
 using Inventory_management.dal.Data;
 using Inventory_management.dal.Models.Company;
 using Inventory_management.dal.Models.Product;
-using SixLabors.ImageSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;

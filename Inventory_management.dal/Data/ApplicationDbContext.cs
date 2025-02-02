@@ -4,6 +4,8 @@ using Inventory_management.dal.Models.Department;
 using Inventory_management.dal.Models.Employee;
 using Inventory_management.dal.Models.Language;
 using Inventory_management.dal.Models.Product;
+using Inventory_management.dal.Models.User;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Inventory_management.dal.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :
             base(options)
