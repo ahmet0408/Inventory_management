@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
 using Inventory_management.bll.DTOs.UserDTO;
+using System.Linq;
 
 namespace Inventory_management.Controllers
 {
@@ -81,6 +82,32 @@ namespace Inventory_management.Controllers
         {
             var user = _userService.GetById(id);
             return Ok(user.RefreshTokens);
+        }
+
+        [Authorize]
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            var token = Request.Cookies["refreshToken"];
+            var result = _userService.RevokeToken(token);
+
+            // Clear refresh token cookie
+            Response.Cookies.Delete("refreshToken");
+
+            return Ok(new { message = "Logged out successfully" });
+        }
+
+        [Authorize]
+        [HttpGet("validate-token")]
+        public IActionResult ValidateToken()
+        {
+            // Authorize attribute checks if token is valid
+            // If we reached here, token is valid
+            return Ok(new
+            {
+                StatusCode =200,
+                isValid = true
+            });
         }
     }
 }
