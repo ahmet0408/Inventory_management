@@ -76,21 +76,21 @@ namespace Inventory_management.bll.Services.UserService
                 authenticationModel.Roles = rolesList.ToList();
 
 
-                //if (user.RefreshTokens.Any(a => a.IsActive))
-                //{
-                //    var activeRefreshToken = user.RefreshTokens.Where(a => a.IsActive == true).FirstOrDefault();
-                //    authenticationModel.RefreshToken = activeRefreshToken.Token;
-                //    authenticationModel.RefreshTokenExpiration = activeRefreshToken.Expires;
-                //}
-                //else
-                //{
-                //    var refreshToken = CreateRefreshToken();
-                //    authenticationModel.RefreshToken = refreshToken.Token;
-                //    authenticationModel.RefreshTokenExpiration = refreshToken.Expires;
-                //    user.RefreshTokens.Add(refreshToken);
-                //    _dbContext.Update(user);
-                //    _dbContext.SaveChanges();
-                //}
+                if (user.RefreshTokens.Any(a => a.IsActive))
+                {
+                    var activeRefreshToken = user.RefreshTokens.Where(a => a.IsActive == true).FirstOrDefault();
+                    authenticationModel.RefreshToken = activeRefreshToken.Token;
+                    authenticationModel.RefreshTokenExpiration = activeRefreshToken.Expires;
+                }
+                else
+                {
+                    var refreshToken = CreateRefreshToken();
+                    authenticationModel.RefreshToken = refreshToken.Token;
+                    authenticationModel.RefreshTokenExpiration = refreshToken.Expires;
+                    user.RefreshTokens.Add(refreshToken);
+                    _dbContext.Update(user);
+                    _dbContext.SaveChangesAsync();
+                }
 
                 return authenticationModel;
             }

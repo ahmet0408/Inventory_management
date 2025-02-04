@@ -29,7 +29,7 @@ namespace Inventory_management.Controllers
         public async Task<IActionResult> GetTokenAsync(LoginDTO model)
         {
             var result = await _userService.GetTokenAsync(model);
-            //SetRefreshTokenInCookie(result.RefreshToken);
+            SetRefreshTokenInCookie(result.RefreshToken);
             return Ok(result);
         }
         [HttpPost("addrole")]
