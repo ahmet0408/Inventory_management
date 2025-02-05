@@ -48,21 +48,21 @@ namespace Inventory_management.bll.Services.UserService
                     await _userManager.AddToRoleAsync(user, "User");
 
                 }
-                return $"User Registered with username {user.UserName}";
+                return $"{user.UserName} atly ulanyjy hasaba alyndy!";
             }
             else
             {
-                return $"Email {user.Email} is already registered.";
+                return $"{user.UserName} ulanyjy ady öň hasapda dur!";
             }
         }
         public async Task<AuthenticationDTO> GetTokenAsync(LoginDTO model)
         {
             var authenticationModel = new AuthenticationDTO();
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _userManager.FindByNameAsync(model.Email);
             if (user == null)
             {
                 authenticationModel.IsAuthenticated = false;
-                authenticationModel.Message = $"No Accounts Registered with {model.Email}.";
+                authenticationModel.Message = $"{model.Email} ulanyjy hasapda ýok!";
                 return authenticationModel;
             }
             if (await _userManager.CheckPasswordAsync(user, model.Password))
@@ -95,7 +95,7 @@ namespace Inventory_management.bll.Services.UserService
                 return authenticationModel;
             }
             authenticationModel.IsAuthenticated = false;
-            authenticationModel.Message = $"Incorrect Credentials for user {user.Email}.";
+            authenticationModel.Message = $"{user.UserName} ulanyjynyň açar sözi nädogry!";
             return authenticationModel;
         }
 
