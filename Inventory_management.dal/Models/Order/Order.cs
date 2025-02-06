@@ -21,5 +21,6 @@ namespace Inventory_management.dal.Models.Order
         public int EmployeeId { get; set; }
         public ApplicationUser  User { get; set; }
         public string UserId { get; set; }        
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
