@@ -73,5 +73,12 @@ namespace Inventory_management.bll.Services.ProductService
             var result = _mapper.Map<IEnumerable<ProductDTO>>(products);
             return result;
         }
+
+        public async Task<ProductDTO> GetProductByBarcode(string barcode)
+        {
+            var product = await _dbContext.Product.Include(p => p.Department).ThenInclude(p => p.DepartmentTranslates).Include(p => p.Employee).Include(p => p.ProductTranslates).Include(p => p.Category).ThenInclude(p => p.CategoryTranslates).SingleOrDefaultAsync(p => p.Barcode == barcode);
+            var result = _mapper.Map<ProductDTO>(product);
+            return result;
+        }
     }
 }

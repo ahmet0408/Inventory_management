@@ -24,6 +24,19 @@ namespace Inventory_management.Controllers
             var products = _productService.GetProducts();
             return Ok(products);    
         }
+
+        [HttpPost("getbybarcode")]
+        public async Task<IActionResult> GetProductByBarcode([FromBody] string barcodeText)
+        {
+            if (string.IsNullOrEmpty(barcodeText))
+            {
+                return BadRequest(new { message = "nädogry maglumat" });
+            }
+            var product = await _productService.GetProductByBarcode(barcodeText);
+            if (product != null) { return Ok(product); }
+            return BadRequest();
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDTO createProductDTO)
         {
