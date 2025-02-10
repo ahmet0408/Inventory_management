@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\api\**" />
+    <Content Remove="Controllers\api\**" />
+    <EmbeddedResource Remove="Controllers\api\**" />
+    <None Remove="Controllers\api\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
@@ -18,10 +25,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Inventory_management.bll\Inventory_management.bll.csproj" />
     <ProjectReference Include="..\Inventory_management.dal\Inventory_management.dal.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\api\" />
   </ItemGroup>
 
 </Project>
