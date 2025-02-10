@@ -2,11 +2,13 @@
 using Inventory_management.bll.DTOs.CategoryDTO;
 using Inventory_management.bll.DTOs.CompanyDTO;
 using Inventory_management.bll.DTOs.CreateCompanyDTO;
+using Inventory_management.bll.DTOs.CustomeDTO;
 using Inventory_management.bll.DTOs.DepartmentDTO;
 using Inventory_management.bll.DTOs.EmployeeDTO;
 using Inventory_management.bll.DTOs.ProductDTO;
 using Inventory_management.dal.Models.Category;
 using Inventory_management.dal.Models.Company;
+using Inventory_management.dal.Models.Customer;
 using Inventory_management.dal.Models.Department;
 using Inventory_management.dal.Models.Employee;
 using Inventory_management.dal.Models.Product;
@@ -26,6 +28,10 @@ namespace Inventory_management.Extensions
             CreateMap<EditEmployeeDTO, Employee>();
             CreateMap<Employee, EmployeeDTO>()
                 .ForMember(p => p.DepartmentName, p => p.MapFrom(p => p.Department.DepartmentTranslates.Select(p => p.Name).FirstOrDefault()));
+
+            CreateMap<CreateCustomerDTO, Customer>();
+            CreateMap<Customer, CustomerDTO>();
+            
 
             CreateMap<CreateDepartmentDTO, Department>();
             CreateMap<DepartmentTranslateDTO, DepartmentTranslate>().ReverseMap();

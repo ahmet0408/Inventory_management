@@ -1,5 +1,6 @@
 ﻿using Inventory_management.dal.Models.Category;
 using Inventory_management.dal.Models.Company;
+using Inventory_management.dal.Models.Customer;
 using Inventory_management.dal.Models.Department;
 using Inventory_management.dal.Models.Employee;
 using Inventory_management.dal.Models.Language;
@@ -22,6 +23,7 @@ namespace Inventory_management.dal.Data
         {
         }
         public DbSet<Company> Company { get; set; }
+        public DbSet<Customer> Customer { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Department> Department { get; set; }

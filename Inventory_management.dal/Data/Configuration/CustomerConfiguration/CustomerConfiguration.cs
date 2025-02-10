@@ -10,6 +10,7 @@ namespace Inventory_management.dal.Data.Configuration.CustomerConfiguration
         {
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Address);
+            builder.Property(p => p.Picture);
             builder.Property(p => p.FirstName);
             builder.Property(p => p.LastName);
             builder.Property(p => p.Phone);
