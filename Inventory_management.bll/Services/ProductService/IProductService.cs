@@ -13,6 +13,7 @@ namespace Inventory_management.bll.Services.ProductService
         Task EditProduct(EditProductDTO modelDTO);
         Task RemoveProduct(int id);
         IEnumerable<ProductDTO> GetProducts();
+        IEnumerable<ProductDTO> GetProductsByCategoryId(int id);
         Task<ProductDTO> GetProductByBarcode(string barcode); 
     }
 }

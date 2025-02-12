@@ -36,7 +36,12 @@ namespace Inventory_management.Controllers
             if (product != null) { return Ok(product); }
             return BadRequest();
         }
-
+        [HttpGet("GetByCategory/{id}")]
+        public IActionResult GetProductsByCategoryId(int id)
+        {
+            var products = _productService.GetProductsByCategoryId(id);
+            return Ok(products);
+        }
         [HttpPost("create")]
         public async Task<IActionResult> CreateProduct([FromForm] CreateProductDTO createProductDTO)
         {
