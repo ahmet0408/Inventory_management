@@ -16,7 +16,7 @@ namespace Inventory_management.dal.Models.Employee
         public string PassportFile { get; set; }
         public int DepartmentId { get; set; }
         public Department.Department Department { get; set; }
-        public ICollection<Order.Order> Orders { get; set; }
+        public ICollection<Rent.Rent> Rents { get; set; }
         public ICollection<Product.Product> Products { get; set; }
     }
 }

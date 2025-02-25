@@ -11,7 +11,7 @@ namespace Inventory_management.dal.Models.User
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<Order.Order> Orders { get; set; }
+        public ICollection<Rent.Rent> Rents { get; set; }
         public List<RefreshToken> RefreshTokens { get; set; }
     }
 }

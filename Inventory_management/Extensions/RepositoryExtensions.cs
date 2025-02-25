@@ -5,6 +5,7 @@ using Inventory_management.bll.Services.DepartmentService;
 using Inventory_management.bll.Services.EmployeeService;
 using Inventory_management.bll.Services.ImageService;
 using Inventory_management.bll.Services.ProductService;
+using Inventory_management.bll.Services.RentService;
 using Inventory_management.bll.Services.UserService;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +22,7 @@ namespace Inventory_management.Extensions
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IRentService, RentService>();
             services.AddScoped<IUserService, UserService>();
             return services;
         }

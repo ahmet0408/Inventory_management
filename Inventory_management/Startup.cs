@@ -41,7 +41,7 @@ namespace Inventory_management
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp",
-                    builder => builder.WithOrigins("https://inventory-management-lovat-alpha.vercel.app", "http://localhost:3000") // Adjust as per your React app URL
+                    builder => builder.WithOrigins("https://inventory-management-eight-omega.vercel.app", "http://localhost:3000") // Adjust as per your React app URL
                                       .AllowAnyHeader()
                                       .AllowAnyMethod()
                                       .AllowCredentials());

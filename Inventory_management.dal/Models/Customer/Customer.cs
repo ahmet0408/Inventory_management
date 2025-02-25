@@ -14,6 +14,6 @@ namespace Inventory_management.dal.Models.Customer
         public string LastName { get; set; }
         public string Address { get; set; }
         public string[] Phone { get; set; }
-        public ICollection<Order.Order> Orders { get; set; }
+        public ICollection<Rent.Rent> Rents { get; set; }
     }
 }

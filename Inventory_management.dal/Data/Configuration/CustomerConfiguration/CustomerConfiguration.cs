@@ -14,7 +14,7 @@ namespace Inventory_management.dal.Data.Configuration.CustomerConfiguration
             builder.Property(p => p.FirstName);
             builder.Property(p => p.LastName);
             builder.Property(p => p.Phone);
-            builder.HasMany(p => p.Orders).WithOne(p => p.Customer).HasForeignKey(p => p.CustomerId).OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(p => p.Rents).WithOne(p => p.Customer).HasForeignKey(p => p.CustomerId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

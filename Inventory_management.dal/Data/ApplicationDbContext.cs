@@ -5,6 +5,7 @@ using Inventory_management.dal.Models.Department;
 using Inventory_management.dal.Models.Employee;
 using Inventory_management.dal.Models.Language;
 using Inventory_management.dal.Models.Product;
+using Inventory_management.dal.Models.Rent;
 using Inventory_management.dal.Models.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,7 @@ namespace Inventory_management.dal.Data
         public DbSet<Department> Department { get; set; }
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Rent> Rent { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

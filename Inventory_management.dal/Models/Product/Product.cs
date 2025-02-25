@@ -1,4 +1,4 @@
-﻿using Inventory_management.dal.Models.Order;
+﻿using Inventory_management.dal.Models.Rent;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +21,6 @@ namespace Inventory_management.dal.Models.Product
         public int EmployeeId { get; set; }
         public Employee.Employee Employee { get; set; }
         public ICollection<ProductTranslate> ProductTranslates { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<RentDetail> RentDetails { get; set; }
     }
 }
