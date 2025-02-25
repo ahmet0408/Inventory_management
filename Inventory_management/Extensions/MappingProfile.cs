@@ -66,7 +66,7 @@ namespace Inventory_management.Extensions
             CreateMap<RentDTO, Rent>();
             CreateMap<Rent, RentDTO>()
                 .ForMember(p => p.ResponsibleEmployee, p => p.MapFrom(p => (p.User.FirstName + " " + p.User.LastName)))
-                .ForMember(p => p.Customer, p => p.MapFrom(p => (p.Customer.FirstName + " " + p.Customer.LastName)))
+                .ForMember(p => p.CustomerName, p => p.MapFrom(p => (p.Customer.FirstName + " " + p.Customer.LastName)))
                 .ForMember(p => p.CustomerPicture, p => p.MapFrom(p => p.Customer.Picture))
                 .ForMember(p => p.RentNumber, p => p.MapFrom(p => p.Id));
             CreateMap<RentDetail, RentDetailDTO>()
