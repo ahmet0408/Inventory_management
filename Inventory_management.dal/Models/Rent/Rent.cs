@@ -12,6 +12,7 @@ namespace Inventory_management.dal.Models.Rent
         public int Id { get; set; }
         public RentStatus Status { get; set; }
         public string RentType { get; set; }
+        public string Mark { get; set; }
         public DateTime DateOfShipment { get; set; }
         public DateTime DateOfReturn { get; set; }        
         public ApplicationUser  User { get; set; }

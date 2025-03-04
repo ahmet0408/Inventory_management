@@ -17,6 +17,7 @@ namespace Inventory_management.dal.Data.Configuration.OrderConfiguration
             builder.Property(p => p.RentType);
             builder.Property(p => p.Status).HasDefaultValue(RentStatus.Processing);
             builder.Property(p => p.DateOfShipment);
+            builder.Property(p => p.Mark);
             builder.Property(p => p.DateOfReturn);
             builder.Property(p => p.UserId);
             builder.Property(p => p.CustomerId);

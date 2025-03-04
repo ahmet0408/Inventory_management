@@ -35,12 +35,11 @@ namespace Inventory_management.bll.Services.UserService
             var user = new ApplicationUser
             {
                 UserName = model.Username,
-                Email = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName
             };
-            var userWithSameEmail = await _userManager.FindByEmailAsync(model.Email);
-            if (userWithSameEmail == null)
+            var userWithSameUserName = await _userManager.FindByNameAsync(model.Username);
+            if (userWithSameUserName == null)
             {
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

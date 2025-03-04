@@ -3,15 +3,17 @@ using System;
 using Inventory_management.dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Inventory_management.dal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250302180212_Produ")]
+    partial class Produ
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,12 +246,6 @@ namespace Inventory_management.dal.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Document")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<int>("EmployeeId")
                         .HasColumnType("integer");
 
@@ -320,9 +316,6 @@ namespace Inventory_management.dal.Migrations
 
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Mark")
-                        .HasColumnType("text");
 
                     b.Property<string>("RentType")
                         .HasColumnType("text");
