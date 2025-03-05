@@ -21,6 +21,7 @@ namespace Inventory_management.dal.Data.Configuration.OrderConfiguration
             builder.Property(p => p.DateOfReturn);
             builder.Property(p => p.UserId);
             builder.Property(p => p.CustomerId);
+            builder.Property(p => p.TotalPrice);
             builder.HasOne(p => p.User).WithMany(p => p.Rents).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(p => p.RentDetails).WithOne(p => p.Rent).HasForeignKey(p => p.RentId).OnDelete(DeleteBehavior.Cascade);
         }

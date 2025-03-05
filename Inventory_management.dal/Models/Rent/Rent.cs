@@ -18,6 +18,7 @@ namespace Inventory_management.dal.Models.Rent
         public ApplicationUser  User { get; set; }
         public string UserId { get; set; }
         public int CustomerId { get; set; }
+        public int TotalPrice { get; set; }
         public Customer.Customer Customer { get; set; }
         public ICollection<RentDetail> RentDetails { get; set; }
     }

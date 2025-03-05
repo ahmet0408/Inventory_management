@@ -18,6 +18,7 @@ namespace Inventory_management.bll.DTOs.RentDTO
         public string CustomerPicture { get; set; }
         public string Mark { get; set; }
         public string UserId { get; set; }
+        public int TotalPrice { get; set; }
         public string ResponsibleEmployee { get; set; }
         public ICollection<RentDetailDTO> RentDetails { get; set; } 
     }
