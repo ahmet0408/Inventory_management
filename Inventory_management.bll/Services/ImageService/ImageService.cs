@@ -19,7 +19,7 @@ namespace Inventory_management.bll.Services.ImageService
         }
         public bool DeleteImage(string pictureName, string path)
         {
-            path = _appEnvironment.WebRootPath + "\\images\\" + path + "\\" + pictureName;
+            path = _appEnvironment.WebRootPath + "/images/" + path + "/" + pictureName;
 
             if (!File.Exists(path)) return false;
 
@@ -37,7 +37,7 @@ namespace Inventory_management.bll.Services.ImageService
         public async Task<string> UploadImage(IFormFile formFile, string path)
         {
             var fileName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(formFile.FileName);
-            path = _appEnvironment.WebRootPath + "\\images\\" + path + "\\";
+            path = _appEnvironment.WebRootPath + "/images/" + path + "/";
 
             if (!Directory.Exists(path))
             {

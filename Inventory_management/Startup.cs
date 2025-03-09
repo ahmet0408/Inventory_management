@@ -41,7 +41,7 @@ namespace Inventory_management
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp",
-                    builder => builder.WithOrigins("https://inventory-management-eight-omega.vercel.app", "http://localhost:3000") // Adjust as per your React app URL
+                    builder => builder.WithOrigins("http://203.161.53.163:5005", "http://localhost:3000", "http://192.168.1.14:3000") // Adjust as per your React app URL
                                       .AllowAnyHeader()
                                       .AllowAnyMethod()
                                       .AllowCredentials());
@@ -114,6 +114,12 @@ namespace Inventory_management
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
+                          Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -121,7 +127,7 @@ namespace Inventory_management
                 app.UseSwaggerUI(c => { c.DisplayRequestDuration(); c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventory_management v1"); });
             }
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection(); //build edende komment etmeli
             app.UseRequestLocalization();
             app.UseCors("AllowReactApp");
             app.UseRouting();
