@@ -123,10 +123,14 @@ namespace Inventory_management
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => { c.DisplayRequestDuration(); c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventory_management v1"); });
+                
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.DisplayRequestDuration();
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inventory_management v1");
+                c.RoutePrefix = "swagger";
+            });
             app.UseHttpsRedirection(); //build edende komment etmeli
             app.UseRequestLocalization();
             app.UseCors("AllowReactApp");
